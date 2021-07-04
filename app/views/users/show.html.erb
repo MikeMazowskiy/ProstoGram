@@ -8,18 +8,23 @@
 
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
-        <h2 class="username">Prostogramec</h2>
-        <a class="edit-profile">
+        <h2 class="username"><%= current_user.username %></h2>
+        <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
           <button>Edit Profile</button>
         </a>
+        <a class="log-out" href="<%= destroy_user_session_path%>" data-method="delete">
+        <button>Log out</button>
+        </a>
+
       </div>
       <ul class="posts">
         <li><span>0</span> posts</li>
         <li><span>0</span> followers</li>
         <li><span>0</span> following</li>
       </ul>
-      <h2 class="name">Prosto Gram</h2>
-      <a class="website">prostograme.com</a>
+      <h2 class="name"><%= current_user.name %></h2>
+      <%=link_to current_user.website, current_user.website, class:  'website' %>
+    </div>
     </div>
     <div class="user-tabs">
       <a class="tab active" href="">
