@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  def show
+  before_action :authenticate_user!, only: [:edit, :update]
 
+  def show
+    @user  = User.find(params[:id])
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def edit
@@ -14,6 +17,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username,:name,:website,:bio,:email,:phone,:gender)
+    params.require(:user).permit(:username,:name,:website,:bio,:email,:phone,:gender,:avatar)
   end
 end

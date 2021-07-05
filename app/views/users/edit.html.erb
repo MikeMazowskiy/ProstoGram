@@ -14,7 +14,9 @@
       <%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
         <div class="form-group row">
           <div class="col-sm-3 col-form-label">
-            <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykzeMt1JIR2i0KSm3HZLZhZnKiAT8mn4_xA&usqp=CAU">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, class: 'avatar' %>
+            <% end %>
           </div>
           <div class="col-sm-9">
             <p class="username"><%=current_user.username %></p>
@@ -25,6 +27,12 @@
           <%= f.label :name, class: 'col-sm-3 col-form-label' %>
           <div class="col-sm-9">
             <%= f.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :avatar, class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= f.file_field :avatar, class: 'form-control' %>
           </div>
         </div>
         <div class="form-group row">

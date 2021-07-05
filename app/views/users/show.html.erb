@@ -2,7 +2,9 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykzeMt1JIR2i0KSm3HZLZhZnKiAT8mn4_xA&usqp=CAU">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar %>
+        <% end %>
       </div>
     </div>
 
@@ -12,13 +14,13 @@
         <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
           <button>Edit Profile</button>
         </a>
-        <a class="log-out" href="<%= destroy_user_session_path%>" data-method="delete">
+        <a class="log-out" href="<%=destroy_user_session_path%>" data-method="delete">
         <button>Log out</button>
         </a>
 
       </div>
       <ul class="home">
-        <li><span>0</span> posts</li>
+        <li><span><%= @posts.count  %></span> posts</li>
         <li><span>0</span> followers</li>
         <li><span>0</span> following</li>
       </ul>
@@ -46,14 +48,9 @@
     </div>
   </div>
   <div class="user-images">
+    <% @posts.each do |post| %>
     <div class="wrapper">
-      <img src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg">
+      <%=image_tag post.image %>
     </div>
-    <div class="wrapper">
-      <img src="https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300">
-    </div>
-    <div class="wrapper">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRti8zaBX3tyXBF9NJ1yqpZjD6Ivd87ufQs--a63UO6DmGSsErY43fyIyFi17tXEPxgXTk&usqp=CAU">
-    </div>
+    <% end %>
   </div>
-</div>
