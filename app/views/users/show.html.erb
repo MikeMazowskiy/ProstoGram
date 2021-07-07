@@ -20,8 +20,9 @@
           </a>
         <% end %>
         <% if current_user.present? && current_user != @user %>
-          <%= link_to("Follow", follows_path(followed_user_id: @user.id), method:  :post) %>
+          <%= link_to("Follow", follows_path(followed_user_id: @user.id), method:  :post, :class => "btn btn-primary")  %>
         <% end %>
+
       </div>
       <ul class="home">
         <li><span><%= @posts.count  %></span> posts</li>
