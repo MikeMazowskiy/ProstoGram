@@ -1,7 +1,21 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
+  has_many :follower_follows, foreign_key: :followed_user_id, class_name: "Follower"
+  has_many :followers, through: :follower_follows, source: :follower
+
+  has_many :followed_follows, foreign_key: :follower_id, class_name: "Follower"
+  has_many :followed_user, through: :followed_follows, source: :followed_user
+
   has_one_attached :avatar
+
+  def followers
+    Follower.where(followed_user_id: self.id).count
+  end
+
+  def followed
+    Follower.where(follower_id: self.id).count
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

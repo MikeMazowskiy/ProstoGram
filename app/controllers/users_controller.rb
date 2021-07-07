@@ -10,6 +10,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def follow_user
+    followed_user = params[:follow_id]
+    if Follower.create!(follower_id: current_user.id, followed_user_id: followed_user)
+      flash[:success] = "New followed"
+    else
+      flash[:warning] = "Error"
+    end
+  end
+
   def update
     current_user.update(user_params)
     redirect_to current_user

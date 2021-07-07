@@ -1,20 +1,4 @@
- .homepage {
-   .form-upload {
-     border: 1px solid #dbdbdb;
-     height: auto;
-     margin: 30px 180px;
-     padding: 30px;
-     border-radius: 3px;
-
-     input[type='text'] {
-       width: 100%;
-     }
-
-     .form-group {
-       padding: 10px;
-     }
-   }
-
+.homepage {
    .posts {
      margin: 50px 180px 10px;
 
@@ -33,6 +17,7 @@
 
            img {
              width: 100%;
+             height: 100%;
              border: 1px solid #efefef;
              border-radius: 50%;
            }
@@ -63,6 +48,24 @@
      }
    }
  }
+
+
+  .new-post-page {
+    border: 1px solid #dbdbdb;
+    height: auto;
+    margin: 30px 180px;
+    padding: 30px;
+    border-radius: 3px;
+
+    input[type='text'] {
+      width: 100%;
+    }
+
+    .form-group {
+      padding: 10px;
+    }
+  }
+
  .post-show {
      margin: 30px 5px 0;
      border: 1px solid #DADADA;
@@ -115,4 +118,6 @@
        font-size: 15px;
        text-decoration: underline;
      }
-   }
+ }
+
+
