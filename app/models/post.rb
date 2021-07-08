@@ -1,11 +1,16 @@
 class Post < ApplicationRecord
+  #User
   belongs_to :user
   has_one_attached :image
 
+  validate :image_presence
+
+  #Comments
+  has_many :comments
+
+  #Hash Tags
   has_many :post_hash_tags
   has_many :hash_tags, through: :post_hash_tags
-
-  validate :image_presence
 
   after_commit :create_hash_tags, on: :create
 

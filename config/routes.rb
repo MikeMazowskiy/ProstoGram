@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/index'
   get 'search/index'
   get 'home/index'
 
@@ -7,7 +8,10 @@ Rails.application.routes.draw do
 
 
   root to: 'posts#index'
-  resources :posts, only: [:new, :create, :show, :destroy]
+
+  resources :posts, only: [:new, :create, :show, :destroy] do
+    resources :comments, only: [:create, :destroy, :edit]
+  end
   resources :users, only: [:show, :edit, :update]
 
   resources :followers, only: [:index]
