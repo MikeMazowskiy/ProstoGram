@@ -27,6 +27,13 @@
         <% end %>
        <% end %>
       </div>
+      <% user_like = @post.likes.find { |like| like.user_id == current_user.id}%>
+      <% if user_like %>
+        <%= button_to 'Unlike', post_like_path(@post, user_like), method: :delete %>
+      <% else %>
+        <%= button_to 'Like', post_likes_path(@post), method: :post %>
+      <% end %>
+      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
      <div class="delete">
        <% if current_user.posts.exists?(@post.id) %>
          <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-warning" %>
@@ -35,7 +42,7 @@
     </div>
     <hr>
     <div class="comment">
-      <%= render "comments/comments", post: @post %>
+      <%#= render "comments/comments", post: @post %>
       <%= render partial: 'comments/new'%>
     </div>
   </div>

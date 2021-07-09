@@ -20,7 +20,11 @@
           </a>
         <% end %>
         <% if current_user.present? && current_user != @user %>
-          <%= link_to("Follow", follows_path(followed_user_id: @user.id), method:  :post, :class => "btn btn-primary")  %>
+          <%if current_user.follow_check(@user, current_user) == true%>
+            <%= link_to("Unfollow", follow_path(followed_user_id: @user), method:  :delete, :class => "btn btn-danger")  %>
+          <%else %>
+            <%= link_to("Follow", follows_path(followed_user_id: @user.id), method:  :post, :class => "btn btn-primary")  %>
+          <% end %>
         <% end %>
 
       </div>
@@ -41,10 +45,6 @@
       <a class="tab" href="<%= new_post_path %>">
         <i class="fa fa-check"></i>
         NEW POST
-      </a>
-      <a class="tab" href="">
-        <i class="fa fa-tag"></i>
-        TAGGED
       </a>
     </div>
   </div>

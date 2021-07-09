@@ -87,6 +87,7 @@
          width: 40px;
          height: 40px;
          margin: 8px;
+         margin-left: 25px;
 
          img {
            width: 100%;
@@ -98,6 +99,7 @@
 
        .username {
          padding-top: 15px;
+         padding-left: 10px;
          color: #262626;
          font-size: 14px;
          font-weight: 600;
@@ -119,5 +121,10 @@
        text-decoration: underline;
      }
  }
+.btn-outline-primary{
+  float: right;
+}
+
+
 
 

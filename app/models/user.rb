@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_many :follower_follows, foreign_key: :followed_user_id, class_name: "Follower"
   has_many :followers, through: :follower_follows, source: :follower
@@ -16,8 +17,20 @@ class User < ApplicationRecord
   def followed
     Follower.where(follower_id: self.id).count
   end
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-       :recoverable, :rememberable, :trackable, :validatable
+
+  def follow_check(user, current_user)
+    @followed_id = Follower.find_by_followed_user_id(user.id)
+    @follower_id = Follower.find_by_follower_id(current_user.id)
+
+    if @followed_id == @follower_id
+      return  true
+    else
+      return false
+    end
   end
+
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+    devise :database_authenticatable, :registerable,
+       :recoverable, :rememberable, :trackable, :validatable
+end

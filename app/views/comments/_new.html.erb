@@ -1,7 +1,18 @@
 <p><b>Comments:</b></p>
 <% @post.comments.each do |comment| %>
   <div class="card">
-    <p class="card-title"><strong> <%= @post.user.username %>:</strong></p>
+    <div class="row">
+      <div class="user">
+        <div class="avatar">
+          <% if @post.user.avatar.attached? %>
+            <%= link_to user_path(@post.user) do %>
+              <%= image_tag @post.user.avatar %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
+      </div>
+    </div>
     <p class="card-text"><%= comment.body %></p>
     <div>
       <%= link_to "Delete comment", post_comment_path(comment), method: :delete, data: {confirm:"Do you wanna to delete comment?"} ,:class => 'btn btn-outline-primary'%>

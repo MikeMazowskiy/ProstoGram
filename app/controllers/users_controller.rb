@@ -19,6 +19,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def following?
+    following_ids = Follower.where(follower_id: current_user.id)
+    following_ids << current_user.id
+
+    User.where.not(id: following_ids)
+  end
+
   def update
     current_user.update(user_params)
     redirect_to current_user
