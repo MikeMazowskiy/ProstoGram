@@ -13,16 +13,8 @@ class FollowsController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    # @current_user.followed_user.find_by(follower_id: @user.id).destroy
-    @followed_id = Follower.find_by_followed_user_id(@user).id
-    @follower_id = Follower.find_by_follower_id(current_user).id
-
-    if @followed_id == @follower_id
-      @relation_id = @follower_id
-      Follower.destroy(@relation_id)
-    else
-      flash[:warning] = "Error"
-    end
+    @relation_id = Follower.where(follower_id: current_user, followed_user_id: @user).first!.id
+    Follower.destroy(@relation_id)
 
     redirect_to user_path(@user)
   end

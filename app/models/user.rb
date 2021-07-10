@@ -19,13 +19,12 @@ class User < ApplicationRecord
   end
 
   def follow_check(user, current_user)
-    @followed_id = Follower.find_by_followed_user_id(user.id)
-    @follower_id = Follower.find_by_follower_id(current_user.id)
+    @relation_boolean = Follower.where(follower_id: current_user, followed_user_id: user).exists?
 
-    if @followed_id == @follower_id
-      return  true
+    if @relation_boolean == true
+      true
     else
-      return false
+      false
     end
   end
 
