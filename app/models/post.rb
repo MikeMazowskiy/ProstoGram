@@ -9,6 +9,12 @@ class Post < ApplicationRecord
 
   after_commit :create_hash_tags, on: :create
 
+  def create_hash_tags
+    extract_name_hash_tags.each do |name|
+      hash_tags.create(name: name)
+    end
+  end
+
   def image_presence
     errors.add(:image, "can't be blank") unless image.attached?
   end
