@@ -1,9 +1,9 @@
 <section class="post">
   <div class="user">
     <div class="avatar">
-      <% if current_user.avatar.attached? %>
+      <% if post.user.avatar.attached? %>
         <%= link_to user_path(post.user) do %>
-        <%= image_tag current_user.avatar %>
+        <%= image_tag post.user.avatar %>
         <% end %>
       <% end %>
     </div>
@@ -19,4 +19,11 @@
       <% end %>
     <% end %>
   </div>
+  <% user_like = post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if user_like %>
+    <%= button_to 'Unlike', post_like_path(post, user_like), method: :delete %>
+  <% else %>
+    <%= button_to 'Like', post_likes_path(post), method: :post %>
+  <% end %>
+  <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
 </section>

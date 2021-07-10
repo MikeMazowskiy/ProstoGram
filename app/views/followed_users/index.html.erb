@@ -1,0 +1,9 @@
+<h1>Followed</h1>
+
+<ul>
+  <% @followed_user.each do |followed| %>
+    <li>
+      <%= link_to(followed.email,user_path(followed)) %>
+    </li>
+  <% end %>
+</ul>

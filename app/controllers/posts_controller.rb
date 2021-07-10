@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy]
+
+  def index
+    redirect_to home_index_path
+  end
+
   def create
     Post.create(post_params)
     redirect_to home_index_path

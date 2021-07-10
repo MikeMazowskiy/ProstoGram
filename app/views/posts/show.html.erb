@@ -1,31 +1,49 @@
 <div class="post-show row">
-  <div class ="col-md-8">
-    <%=image_tag @post.image, class: 'image' %>
-  </div>
-  <div class="col-md-4">
+  <div class="col-xl-4">
     <div class="user">
       <div class="avatar">
         <% if @post.user.avatar.attached? %>
-        <%= link_to user_path(@post.user) do %>
+          <%= link_to user_path(@post.user) do %>
             <%= image_tag @post.user.avatar %>
           <% end %>
         <% end %>
       </div>
       <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
     </div>
+    <p style="margin: 0"><small>Created_at: <%=@post.created_at %></small></p>
+    <p style="margin: 0"><small>Updated_at: <%=@post.updated_at %></small></p>
+    <hr>
+  <div class ="col-md-8">
+    <%=image_tag @post.image, class: 'image' %>
+  </div>
+    <hr>
+    <div class="flex">
     <div class="description">
-      <% @post.description.to_s.split(' ').each do |word| %>
-        <% if word.start_with?('#') %>
-          <%= link_to word, search_index_path(query: word) %>
-        <% else %>
-          <%= word %>
-            <% end %>
+       <% @post.description.to_s.split(' ').each do |word| %>
+         <% if word.start_with?('#') %>
+           <%= link_to word, search_index_path(query: word) %>
+         <% else %>
+           <%= word %>
+        <% end %>
+       <% end %>
+      </div>
+      <% user_like = @post.likes.find { |like| like.user_id == current_user.id}%>
+      <% if user_like %>
+        <%= button_to 'Unlike', post_like_path(@post, user_like), method: :delete %>
+      <% else %>
+        <%= button_to 'Like', post_likes_path(@post), method: :post %>
       <% end %>
+      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+     <div class="delete">
+       <% if current_user.posts.exists?(@post.id) %>
+         <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-warning" %>
+       <% end %>
+      </div>
     </div>
-    <div class="delete">
-      <% if current_user.posts.exists?(@post.id) %>
-        <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?'} %>
-      <% end %>
+    <hr>
+    <div class="comment">
+      <%#= render "comments/comments", post: @post %>
+      <%= render partial: 'comments/new'%>
     </div>
   </div>
 </div>
