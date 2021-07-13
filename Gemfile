@@ -4,6 +4,8 @@ gem "rails_12factor", group: :production
 
 ruby '3.0.0'
 
+gem 'aws-sdk'
+
 gem 'devise'
 
 gem 'kaminari'
