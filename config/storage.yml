@@ -7,14 +7,20 @@
     root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
- amazon:
-   service: S3
-   #AKIASWCQ4SXSEFC2B5OA
-   access_key_id: <%= Rails.application.credentials.dig(:aws, :AKIASWCQ4SXSEFC2B5OA) %>
-   #xg44KszIuP7uBniTpPfOyDjOefZkpZ73YMB9zCqE
-   secret_access_key: <%= Rails.application.credentials.dig(:aws, :xg44KszIuP7uBniTpPfOyDjOefZkpZ73YMB9zCqE) %>
-   region: eu-central-1
-   bucket: prostogrambucket
+  amazon:
+    service: S3
+    access_key_id: <%= ENV['AKIASWCQ4SXSEFC2B5OA'] %>
+    secret_access_key: <%= ENV['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'] %>
+    region: <%= ENV['eu-central-1'] %>
+    bucket: <%= ENV['prostogrambucket'] %>
+# amazon:
+#   service: S3
+#   #AKIASWCQ4SXSEFC2B5OA
+#   access_key_id: <%#= Rails.application.credentials.dig(:aws, :AKIASWCQ4SXSEFC2B5OA) %>
+#   #xg44KszIuP7uBniTpPfOyDjOefZkpZ73YMB9zCqE
+#   secret_access_key: <%#= Rails.application.credentials.dig(:aws, :xg44KszIuP7uBniTpPfOyDjOefZkpZ73YMB9zCqE) %>
+#   region: eu-central-1
+#   bucket: prostogrambucket
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
