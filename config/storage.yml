@@ -11,7 +11,7 @@
     service: S3
     access_key_id: <%= ENV['AKIASWCQ4SXSEFC2B5OA'] %>
     secret_access_key: <%= ENV['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'] %>
-    region: 'eu-central-1'
+    region: <%= ENV['eu-central-1'] %>
     bucket: <%= ENV['prostogrambucket'] %>
 # amazon:
 #   service: S3
