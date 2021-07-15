@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   def following?
     following_ids = Follower.where(follower_id: current_user.id)
     following_ids << current_user.id
-
     User.where.not(id: following_ids)
   end
 

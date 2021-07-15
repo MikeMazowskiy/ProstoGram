@@ -4,6 +4,14 @@ gem "rails_12factor", group: :production
 
 ruby '3.0.0'
 
+gem 'rubocop', require: false
+
+gem 'rspec'
+
+gem 'rspec-rails'
+
+gem "factory_bot_rails"
+
 gem 'aws-sdk'
 
 gem 'devise'
