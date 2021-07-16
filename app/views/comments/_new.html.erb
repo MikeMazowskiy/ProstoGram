@@ -4,13 +4,13 @@
     <div class="row">
       <div class="user">
         <div class="avatar">
-          <% if @post.user.avatar.attached? %>
-            <%= link_to user_path(@post.user) do %>
-              <%= image_tag @post.user.avatar %>
+          <% if comment.user.avatar.attached? %>
+            <%= link_to user_path(comment.user) do %>
+              <%= image_tag comment.user.avatar %>
             <% end %>
           <% end %>
         </div>
-        <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
+        <%= link_to comment.user.username, user_path(comment.user), class: 'username' %>
       </div>
     </div>
     <p class="card-text"><%= comment.body %></p>
