@@ -8,6 +8,10 @@ gem 'rubocop', require: false
 
 gem 'rspec'
 
+gem 'active_storage_validations'
+
+gem 'mini_magick', '>= 4.9.5'
+
 gem 'ffaker'
 
 gem 'rspec-rails'

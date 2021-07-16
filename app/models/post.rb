@@ -5,6 +5,8 @@ class Post < ApplicationRecord
 
   validate :image_presence
 
+  validates :image, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg']
+
   #Comments
   has_many :comments, dependent: :delete_all
   has_many :likes, dependent: :destroy
