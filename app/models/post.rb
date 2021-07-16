@@ -3,8 +3,6 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates_format_of :image, :with => %r{\.(png|jpg|jpeg)$}i, :multiline => true, :message => "Use a real image"
-
   validate :image_presence
 
   #Comments
