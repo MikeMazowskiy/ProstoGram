@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'comments/index'
   get 'search/index'
   get 'home/index'
-
+  get 'feed_posts/index' => 'feed_posts#index', as: :feed
   devise_for :users
   get 'posts/index'
 
@@ -13,9 +13,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy, :edit]
   end
-  # resources :likes, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
   resources :users, only: [:show, :edit, :update]
 
+  resources :feed_posts, only: [:index]
 
   resources :followers, only: [:index]
   resources :followed_users, only: [:index]

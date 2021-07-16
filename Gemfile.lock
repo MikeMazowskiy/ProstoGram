@@ -1194,6 +1194,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    ffaker (2.18.0)
     ffi (1.15.3)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
@@ -1392,6 +1393,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   factory_bot_rails
+  ffaker
   font-awesome-rails
   jbuilder (~> 2.7)
   jquery-rails

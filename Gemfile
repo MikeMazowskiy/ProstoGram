@@ -8,6 +8,8 @@ gem 'rubocop', require: false
 
 gem 'rspec'
 
+gem 'ffaker'
+
 gem 'rspec-rails'
 
 gem "factory_bot_rails"
