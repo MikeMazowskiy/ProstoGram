@@ -14,9 +14,11 @@
       </div>
     </div>
     <p class="card-text"><%= comment.body %></p>
+    <% if current_user.present? %>
     <div>
       <%= link_to "Delete comment", post_comment_path(comment), method: :delete, data: {confirm:"Do you wanna to delete comment?"} ,:class => 'btn btn-outline-primary'%>
     </div>
+    <% end %>
   </div>
   <br>
 <% end %>
