@@ -1,9 +1,13 @@
 <div class="homepage">
-  <h3 style="text-align: center;"> Homepage  <%= link_to("to Feed", feed_posts_path, :class => 'btn btn-secondary')%></h3>
-  <div class="posts">
-    <% @posts.each do |post| %>
-      <%= render partial: 'post', locals: { post: post } %>
-    <% end %>
-    <%= paginate @posts %>
-  </div>
+  <% if current_user.present? %>
+    <%if current_user.followed_user.exists?%>
+      <h3 style="text-align: center;"> Homepage  <%= link_to("to Feed", feed_posts_path, :class => 'btn btn-secondary')%></h3>
+        <% end %>
+      <% end %>
+          <div class="posts">
+        <% @posts.each do |post| %>
+          <%= render partial: 'post', locals: { post: post } %>
+        <% end %>
+        <%= paginate @posts %>
+          </div>
 </div>

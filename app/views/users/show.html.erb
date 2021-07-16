@@ -46,10 +46,14 @@
         <i class="fa fa-check"></i>
         NEW POST
       </a>
-      <a class="tab" href="<%= feed_posts_path %>">
-        <i class="fa fa-feed"></i>
-        Feed
-      </a>
+        <% if current_user.present? %>
+          <%if current_user.followed_user.exists?%>
+        <a class="tab" href="<%= feed_posts_path %>">
+          <i class="fa fa-feed"></i>
+          Feed
+        </a>
+            <% end %>
+          <% end %>
     </div>
   </div>
   <div class="user-images">
