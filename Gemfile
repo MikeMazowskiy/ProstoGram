@@ -6,17 +6,18 @@ ruby '3.0.0'
 
 gem 'rubocop', require: false
 
-gem 'rspec'
+group :test do
+  gem 'rspec'
+  gem 'active_storage_validations'
+  gem 'mini_magick', '>= 4.9.5'
+  gem 'ffaker'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'database_cleaner-active_record'
+  gem 'database_cleaner-redis'
+end
 
-gem 'active_storage_validations'
-
-gem 'mini_magick', '>= 4.9.5'
-
-gem 'ffaker'
-
-gem 'rspec-rails'
-
-gem "factory_bot_rails"
 
 gem 'aws-sdk'
 
