@@ -1,6 +1,6 @@
 class FollowedUsersController < ApplicationController
   def index
-    @user = User.find(params[:id])
-    @followed_user = @user.followed_user
+    @user = User.find(params[:user_id])
+    @followed = @user.followed
   end
 end

@@ -1,6 +1,7 @@
 require 'ffaker'
 FactoryBot.define do
   factory :user do
+    id {15}
     email { FFaker::Internet.email}
     password { '111111' }
     password_confirmation { '111111' }

@@ -1189,6 +1189,9 @@ GEM
     database_cleaner-redis (2.0.0)
       database_cleaner-core (~> 2.0.0)
       redis
+    database_cleaner-sequel (2.0.0)
+      database_cleaner-core (~> 2.0.0)
+      sequel
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -1279,6 +1282,10 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.4)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -1354,6 +1361,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    sequel (5.46.0)
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     spring (2.1.1)
@@ -1407,6 +1415,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   database_cleaner-active_record
   database_cleaner-redis
+  database_cleaner-sequel
   devise
   factory_bot_rails
   ffaker
@@ -1420,6 +1429,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
+  rails-controller-testing
   rails_12factor
   rspec
   rspec-rails
