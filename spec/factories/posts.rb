@@ -2,7 +2,6 @@ require 'ffaker'
 FactoryBot.define do
   factory :post do
     association :user
-    id { 1 }
     description { FFaker::Lorem.sentence}
     image {Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/pixel.png'))}
 
@@ -17,4 +16,12 @@ FactoryBot.define do
     description { '#test abba #ab /dasdas .fsdfs //fsdfs $fsdfsd %fsfsd ^fdssd @sdfsd'  }
     image {Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/pixel.png'))}
   end
+
+  factory :post1, class: "Post" do
+    association :user
+    id { 3 }
+    description { FFaker::Lorem.sentence}
+    image {Rack::Test::UploadedFile.new(Rails.root.join('spec/fixtures/pixel.png'))}
+  end
+
 end
